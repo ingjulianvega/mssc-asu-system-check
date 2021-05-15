@@ -7,11 +7,13 @@
 		<artifactId>mssc-asu-bom</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
+
 	<groupId>ingjulianvega.ximic</groupId>
 	<artifactId>mssc-asu-system-check</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mssc-asu-system-check</name>
 	<description>ASU system check microservice (revisión por sistema)</description>
+
 	<properties>
 		<!--set this to your docker acct name-->
 		<docker.image.prefix>ingjulianvega</docker.image.prefix>
