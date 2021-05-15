@@ -17,7 +17,6 @@
 		<docker.image.prefix>ingjulianvega</docker.image.prefix>
 		<!--Set to name of project-->
 		<docker.image.name>mssc-asu-system-check</docker.image.name>
-
 	</properties>
 
 	<build>
