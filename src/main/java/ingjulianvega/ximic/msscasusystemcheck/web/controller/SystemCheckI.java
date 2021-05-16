@@ -57,7 +57,7 @@ public interface SystemCheckI {
     @RequestMapping(value = "/visit-id/{visit-id}",
             produces = {"application/json"},
             method = RequestMethod.GET)
-    ResponseEntity<SystemCheckList> getByVisittId(@Parameter(in = ParameterIn.PATH, description = "The visit id", required = true, schema = @Schema()) @NotNull @PathVariable("visit-id") UUID visitId);
+    ResponseEntity<SystemCheckList> getByVisitId(@Parameter(in = ParameterIn.PATH, description = "The visit id", required = true, schema = @Schema()) @NotNull @PathVariable("visit-id") UUID visitId);
 
     @Operation(summary = "Endpoint to create a system check", description = "Creates a new system check", tags = {"system check"})
     @ApiResponses(value = {

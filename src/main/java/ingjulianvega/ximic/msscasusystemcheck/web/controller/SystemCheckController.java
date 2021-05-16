@@ -31,7 +31,7 @@ public class SystemCheckController implements SystemCheckI {
     }
 
     @Override
-    public ResponseEntity<SystemCheckList> getByVisittId(UUID visitId) {
+    public ResponseEntity<SystemCheckList> getByVisitId(UUID visitId) {
         return new ResponseEntity<>(systemCheckService.getByVisitId(visitId), HttpStatus.OK);
     }
 
