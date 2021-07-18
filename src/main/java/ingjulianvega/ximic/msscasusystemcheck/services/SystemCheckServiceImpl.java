@@ -12,6 +12,7 @@ import ingjulianvega.ximic.msscasusystemcheck.web.model.SystemCheckList;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -40,7 +41,14 @@ public class SystemCheckServiceImpl implements SystemCheckService {
         log.debug("getById()...");
         return systemCheckMapper.systemCheckEntityToSystemCheckDto(
                 systemCheckRepository.findById(id)
-                        .orElseThrow(() -> new SystemCheckException(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND, "")));
+                        .orElseThrow(() -> SystemCheckException
+                                .builder()
+                                .httpStatus(HttpStatus.BAD_REQUEST)
+                                .apiCode(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_API_CODE)
+                                .error(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_ERROR)
+                                .message(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_MESSAGE)
+                                .solution(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_SOLUTION)
+                                .build()));
     }
 
     @Override
@@ -72,7 +80,14 @@ public class SystemCheckServiceImpl implements SystemCheckService {
     public void updateById(UUID id, SystemCheck systemCheck) {
         log.debug("updateById...");
         SystemCheckEntity systemCheckEntity = systemCheckRepository.findById(id)
-                .orElseThrow(() -> new SystemCheckException(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND, ""));
+                .orElseThrow(() -> SystemCheckException
+                        .builder()
+                        .httpStatus(HttpStatus.BAD_REQUEST)
+                        .apiCode(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_API_CODE)
+                        .error(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_ERROR)
+                        .message(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_MESSAGE)
+                        .solution(ErrorCodeMessages.SYSTEM_CHECK_NOT_FOUND_SOLUTION)
+                        .build());
 
         systemCheckEntity.setVisitId(systemCheck.getVisitId());
         systemCheckEntity.setSystemId(systemCheck.getSystemId());
